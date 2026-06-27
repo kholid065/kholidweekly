@@ -1,5 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+
+    $koneksi=mysqli_connect("localhost", "root" , "",
+    "lidweekly");
+
+    $query = "SELECT * FROM mahasiswa";
+
+    $result = mysqli_query($koneksi, $query);
+
+?>
+
+
+<!DOCTYPE php>
+
+<php lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,53 +25,42 @@
         </h1>
          <table border="1" align="center" cellspacing="0" cellpadding="1">
             <tr>
-               <td><a href="index.html">home</a></td>
-               <td><a href="kholid.html">profile</a></td>
-               <td><a href="curhat.html">cerita</a></td>
-                <td><a href="mahasiswa.html">Data Mahasiswa</a></td>
+               <td><a href="index.php">home</a></td>
+               <td><a href="kholid.php">profile</a></td>
+               <td><a href="curhat.php">cerita</a></td>
+                <td><a href="mahasiswa.php">Data Mahasiswa</a></td>
             </tr>
         </table>
         <br></br>
         <div class="table-wrapper">
         <div class="table-header">
-            <a href="tambahdata.html">
+            <a href="tambahdata.php">
                 <button class="btn">tambah data</button>
             </a>
         </div>
         <h2>Data Mahasiswa</h2>
         <table align="center" border="1" cellpadding="5px">
             <tr>
-                <th rowspan="2">No</th>
-                <th rowspan="2">Nama</th>
-                <th rowspan="2">NIM</th>
-                <th rowspan="2">Foto</th>
-                <th colspan="3">Nilai</th>
-                <!-- <td>Baris 1, Kolom 3</td> -->
+                <th>id</th>
+                <th>nama</th>
+                <th>nim</th>
+                <th>prodi</th>
+                <th>email</th>
+                <th>no hp</th>
+                <th>foto</th>
             </tr>
+            
+            <?php while($mhs = mysqli_fetch_assoc($result)) { ?>
             <tr>
-                <th>UTS</th>
-                <th>UAS</th>
-                <th>Tugas</th>
-                <!-- <td>Baris 2, Kolom 3</td> -->
-            </tr>
-            <tr>
-                <td align="center">1</td>
-                <td>prabowo</td>
-                <td>085232109856</td>
-                <td><img src="assets/image/download.jpg" alt="Foto zul" width="80px"></td>
-                <td align="center">90</td>
-                <td align="center">95</td>
-                <td align="center">90</td>
-            </tr>
-            <tr>
-                <td align="center">2</td>
-                <td>jokowi</td>
-                <td>085897683427</td>
+                <td><?= $mhs['id']?></td>
+                <td><?= $mhs['nama']?></td>
+                <td><?= $mhs['nim']?></td>
+                <td><?= $mhs['prodi']?></td>
+                <td><?= $mhs['email']?></td>
+                <td><?= $mhs['no_hp']?></td>
                 <td><img src="assets/image/download (1).jpg" alt="Foto rusdi" width="80px"></td>
-                <td align="center">85</td>
-                <td align="center">90</td>
-                <td align="center">88</td>
-            </tr>
+                
+            </tr><?php } ?>
         </table>
         <h2 align="center">Latihan</h2>
         <table class="tabel-latihan" align="center" border="2" cellspacing="10px">
@@ -88,4 +90,4 @@
             </tr>
         </table>
         </body>
-</html>
+</php>

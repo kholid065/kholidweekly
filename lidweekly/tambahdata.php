@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE php>
+<php lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,10 +9,10 @@
 <body>
 <table border="1" align="center" cellspacing="0" cellpadding="1">
             <tr>
-               <td><a href="index.html">home</a></td>
-               <td><a href="kholid.html">profile</a></td>
-               <td><a href="curhat.html">cerita</a></td>
-                <td><a href="mahasiswa.html">Data Mahasiswa</a></td>
+               <td><a href="index.php">home</a></td>
+               <td><a href="kholid.php">profile</a></td>
+               <td><a href="curhat.php">cerita</a></td>
+                <td><a href="mahasiswa.php">Data Mahasiswa</a></td>
             </tr>
         </table>
     <form>
@@ -120,4 +120,4 @@
         </table>
     </form>
 </body>
-</html>
+</php>
