@@ -61,10 +61,15 @@ $mahasiswas = tampildata($query);
                 <td><?= $mhs['email']?></td>
                 <td><?= $mhs['no_hp']?></td>
                 <td><img src="assets/image/download (1).jpg" alt="Foto rusdi" width="80px"></td>
-                <td>
-                    <a href="edit.php"><button>edit</button></a> <b> </b>
-                    <a href="hapusdata.php?id=<?= $mhs['id'] ?>" onclick="return confirm('Yakin ingin menghapus data?')">
-                    <button>Hapus</button>
+               <td>
+        <a href="edit.php?id=<?= $mhs['id']; ?>">
+            <button>Edit</button>
+        </a>
+
+        <a href="hapusdata.php?id=<?= $mhs['id']; ?>" onclick="return confirm('Yakin ingin menghapus data?')">
+            <button>Hapus</button>
+        </a>
+        </td>
             </tr><?php $no++;} ?>
 
         </table>

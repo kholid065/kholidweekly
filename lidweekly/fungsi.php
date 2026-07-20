@@ -57,9 +57,10 @@ function editdata($data, $files, $id)
 
     $namafoto = $files["foto"]["name"];
     $tmpfoto = $files["foto"]["tmp_name"];
-    $path = "assets/image/$namafoto";
 
-    if (move_uploaded_file($tmpfoto, $path)) {
+    if ($namafoto != "") {
+        $path = "assets/image/$namafoto";
+        move_uploaded_file($tmpfoto, $path);
 
         $query = "UPDATE mahasiswa
                   SET
@@ -70,9 +71,18 @@ function editdata($data, $files, $id)
                   no_hp='$no_hp',
                   foto='$namafoto'
                   WHERE id='$id'";
-
-        mysqli_query($konek, $query);
+    } else {
+        $query = "UPDATE mahasiswa
+                  SET
+                  nama='$nama',
+                  nim='$nim',
+                  prodi='$prodi',
+                  email='$email',
+                  no_hp='$no_hp'
+                  WHERE id='$id'";
     }
+
+    mysqli_query($konek, $query);
 
     return mysqli_affected_rows($konek);
 }
