@@ -1,11 +1,10 @@
 <?php
 
-    $koneksi=mysqli_connect("localhost", "root" , "",
-    "lidweekly");
+require 'fungsi.php';
 
-    $query = "SELECT * FROM mahasiswa";
+$query = "SELECT * FROM mahasiswa";
 
-    $result = mysqli_query($koneksi, $query);
+$mahasiswas = tampildata($query);
 
 ?>
 
@@ -50,7 +49,10 @@
                 <th>foto</th>
             </tr>
             
-            <?php while($mhs = mysqli_fetch_assoc($result)) { ?>
+            
+            <?php 
+                $no = 1;
+                foreach($mahasiswas as $mhs) { ?>
             <tr>
                 <td><?= $mhs['id']?></td>
                 <td><?= $mhs['nama']?></td>
@@ -59,8 +61,12 @@
                 <td><?= $mhs['email']?></td>
                 <td><?= $mhs['no_hp']?></td>
                 <td><img src="assets/image/download (1).jpg" alt="Foto rusdi" width="80px"></td>
-                
-            </tr><?php } ?>
+                <td>
+                    <a href="edit.php"><button>edit</button></a> <b> </b>
+                    <a href="hapusdata.php?id=<?= $mhs['id'] ?>" onclick="return confirm('Yakin ingin menghapus data?')">
+                    <button>Hapus</button>
+            </tr><?php $no++;} ?>
+
         </table>
         <h2 align="center">Latihan</h2>
         <table class="tabel-latihan" align="center" border="2" cellspacing="10px">

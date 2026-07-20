@@ -1,123 +1,98 @@
-<!DOCTYPE php>
-<php lang="en">
+<?php
+
+require 'fungsi.php';
+if (isset($_POST['submit']))
+    {
+       
+        if(tambahdata($_POST)> 0)
+            {
+               echo "<script>
+                alert('data berhasil ditambahkan!!');
+                window.location.href='mahasiswa.php';
+                </script>"; 
+            }
+            else
+            {
+              echo "<script>
+                alert('data gagal ditambahkan!!');
+                window.location.href='mahasiswa.php';
+                </script>";  
+            }
+
+
+    }
+
+?>
+
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tambah data</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Tambah Data Mahasiswa</title>
 </head>
 <body>
-<table border="1" align="center" cellspacing="0" cellpadding="1">
-            <tr>
-               <td><a href="index.php">home</a></td>
-               <td><a href="kholid.php">profile</a></td>
-               <td><a href="curhat.php">cerita</a></td>
-                <td><a href="mahasiswa.php">Data Mahasiswa</a></td>
-            </tr>
-        </table>
-    <form>
-        <table>
+
+    <h2>Tambah Data Mahasiswa</h2>
+
+    <form action="" method="post">
+        <table cellpadding="5">
+
             <tr>
                 <td><label for="nama">Nama</label></td>
                 <td>:</td>
-                <td><input type="text" name="cari" id="cari"></td>
+                <td>
+                    <input type="text" name="nama" id="nama" required>
+                </td>
             </tr>
+
             <tr>
                 <td><label for="nim">NIM</label></td>
                 <td>:</td>
-                <td><input type="number" name="cari" id="cari"></td>
+                <td>
+                    <input type="text" name="nim" id="nim" required>
+                </td>
             </tr>
+
             <tr>
-                <td><label for="password">Password</label></td>
+                <td><label for="prodi">Prodi</label></td>
                 <td>:</td>
-                <td><input type="password" name="password" id="password"></td>
+                <td>
+                    <input type="text" name="prodi" id="prodi" required>
+                </td>
             </tr>
+
             <tr>
                 <td><label for="email">Email</label></td>
                 <td>:</td>
-                <td><input type="email" name="email" id="email"></td>
-            </tr>
-            <tr>
-                <td><label for="tel">NO.HP</label></td>
-                <td>:</td>
-                <td><input type="tel" name="number" id="number"></td>
-            </tr>
-            <tr>
-                <td><label for="url">Website Pribadi</label></td>
-                <td>:</td>
-                <td><input type="url" name="url" id="url"></td>
-            </tr>
-            <tr>
-                <td><label for="tgl_lahir">Tanggal Lahir</label></td>
-                <td>:</td>
-                <td><input type="date" name="tgl_lahir" id="tgl_lahir"></td>
-            </tr>
-            <tr>
-                <td><label for="warna">Warna Favorit</label></td>
-                <td>:</td>
-                <td><input type="color" name="warna" id="warna"></td>
-            </tr>
-            <tr>
-                <td><label for="kepuasan">Tingkat Kepuasan</label></td>
-                <td>:</td>
                 <td>
-                    <select name="kepuasan" id="kepuasan">
-                        <option value="sangat_baik">Sangat Baik</option>
-                        <option value="baik">Baik</option>
-                        <option value="cukup">Cukup</option>
-                        <option value="kurang">Kurang</option>
-                    </select>
+                    <input type="email" name="email" id="email" required>
                 </td>
             </tr>
+
             <tr>
-                <td><label for="kelamin">Jenis Kelamin</label></td>
+                <td><label for="no_hp">No HP</label></td>
                 <td>:</td>
                 <td>
-                    <input type="radio" name="kelamin" id="laki" value="laki">
-                    <label for="laki">Laki-laki</label>
-                    <input type="radio" name="kelamin" id="perempuan" value="perempuan">
-                    <label for="perempuan">Perempuan</label>
+                    <input type="text" name="no_hp" id="no_hp" required>
                 </td>
             </tr>
+
             <tr>
-                <td><label for="hobi">Hobi</label></td>
+                <td><label for="foto">Foto</label></td>
                 <td>:</td>
                 <td>
-                    <input type="checkbox" name="hobi" id="hobi1" value="membaca">
-                    <label for="hobi1">Membaca</label>
-                    <input type="checkbox" name="hobi" id="hobi2" value="olahraga">
-                    <label for="hobi2">Olahraga</label>
-                    <input type="checkbox" name="hobi" id="hobi3" value="game">
-                    <label for="hobi3">Game</label>
+                    <input type="text" name="foto" id="foto" placeholder="contoh: foto.jpg">
                 </td>
             </tr>
-            <tr>
-                <td><label for="foto">Upload Foto</label></td>
-                <td>:</td>
-                <td><input type="file" name="foto" id="foto"></td>
-            </tr>
-            <tr>
-                <td><label for="alamat">Alamat</label></td>
-                <td>:</td>
-                <td><textarea name="alamat" id="alamat"></textarea></td>
-            </tr>
-            <tr>
-                <td><label for="jurusan">Jurusan</label></td>
-                <td>:</td>
-                <td>
-                    <select name="jurusan" id="jurusan">
-                        <option value="teknik_informatika">Teknik Informatika</option>
-                        <option value="sistem_informasi">Sistem Informasi</option>
-                        <option value="teknologi_informasi">Teknologi Informasi</option>
-                    </select>
-                </td>
-            </tr>
+
             <tr>
                 <td colspan="3">
-                    <button type="submit">Submit</button>
+                    <button type="submit" name="submit">Simpan</button>
+                    
                 </td>
             </tr>
+
         </table>
     </form>
+
 </body>
-</php>
+</html>
